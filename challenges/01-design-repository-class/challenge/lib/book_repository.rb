@@ -1,10 +1,7 @@
 require_relative '../lib/book.rb'
 
-class BookRepo
+class BookRepository
   def all
-    # Executes the SQL query:
-    # SELECT id, name, cohort_name FROM albums;
-
     sql = 'SELECT id, title, author_name FROM books;'
     result_set = DatabaseConnection.exec_params(sql, [])
 

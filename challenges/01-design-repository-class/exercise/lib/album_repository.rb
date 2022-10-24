@@ -2,8 +2,6 @@ require_relative './album'
 
 class AlbumRepository
   def all
-    # Executes the SQL query:
-    # SELECT id, name, cohort_name FROM albums;
 
     sql = 'SELECT id, title, release_year, artist_id FROM albums;'
     result_set = DatabaseConnection.exec_params(sql, [])
@@ -21,6 +19,6 @@ class AlbumRepository
     end
 
     return albums
-    # Returns an array of Album objects.
+
   end
 end

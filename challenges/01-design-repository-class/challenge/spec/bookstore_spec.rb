@@ -1,4 +1,4 @@
-require_relative '../lib/bookrepo.rb'
+require_relative '../lib/book_repository.rb'
 
 def reset_books_table
   seed_sql = File.read('spec/seeds_books.sql')
@@ -6,13 +6,13 @@ def reset_books_table
   connection.exec(seed_sql)
 end
 
-describe BookRepo do
+describe BookRepository do
   before(:each) do 
     reset_books_table
   end
 
   it "returns a list of books" do
-    repo = BookRepo.new
+    repo = BookRepository.new
     books = repo.all
     expect(books.length).to eq 2
     expect(books[0].id).to eq '1'
