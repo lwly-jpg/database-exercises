@@ -14,3 +14,6 @@ end
 album_repository.all.each do |album|
   p album
 end
+
+album = album_repository.find(1)
+puts album.title

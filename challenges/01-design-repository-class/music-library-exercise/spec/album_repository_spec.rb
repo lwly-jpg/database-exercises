@@ -20,4 +20,12 @@ describe 'AlbumRepository' do
     expect(albums.first.release_year).to eq '2001'
     expect(albums.first.artist_id).to eq '13'
   end
+
+  it 'prints out single album to the terminal' do
+    repo = AlbumRepository.new
+    album = repo.find(2)
+    expect(album.title).to eq 'Nevermind'
+    expect(album.release_year).to eq "1991"
+    expect(album.artist_id).to eq "14"
+  end
 end
