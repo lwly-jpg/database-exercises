@@ -20,6 +20,13 @@ describe ArtistRepository do
     expect(artists.first.genre).to eq 'Pop'
   end
 
+  it 'prints out single artist to the terminal' do
+    repo = ArtistRepository.new
+    artist = repo.find(2)
+    expect(artist.name).to eq '50 Cent'
+    expect(artist.genre).to eq "Rap"
+  end
+
   it 'creates a new artist' do 
     repo = ArtistRepository.new
     new_artist = Artist.new
