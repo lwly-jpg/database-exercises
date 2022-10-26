@@ -6,7 +6,7 @@ def reset_artist_table
   connection.exec(seed_sql)
 end
 
-describe 'ArtistRepository' do
+describe ArtistRepository do
   before(:each) do 
     reset_artist_table
   end
@@ -18,5 +18,17 @@ describe 'ArtistRepository' do
     expect(artists.first.id).to eq '1'
     expect(artists.first.name).to eq 'Spice Girls'
     expect(artists.first.genre).to eq 'Pop'
+  end
+
+  it 'creates a new artist' do 
+    repo = ArtistRepository.new
+    new_artist = Artist.new
+    new_artist.name = 'System of a Down'
+    new_artist.genre = 'Heavy Metal'
+    repo.create(new_artist)
+    artists = repo.all
+    last_artist = artists.last
+    expect(last_artist.name).to eq ('System of a Down')
+    expect(last_artist.genre).to eq ('Heavy Metal')
   end
 end
