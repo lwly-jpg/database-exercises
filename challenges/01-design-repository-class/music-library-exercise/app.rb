@@ -19,19 +19,29 @@ class Application
     input = @terminal.gets.chomp
 
     if input == "1"
-      result = DatabaseConnection.exec_params('SELECT * FROM albums;', [])
-      result.each do |record|
-        p "#{record['id']} - #{record['title']} - #{record['release_year']}"
-      end
-
+      list_albums
     elsif input == "2"
-      result = DatabaseConnection.exec_params('SELECT * FROM artists;', [])
-      result.each do |record|
-        p "#{record['id']} - #{record['name']} - #{record['genre']}"
-      end
+      list_artists
     end 
 
   end
+
+  private
+
+  def list_albums
+    result = DatabaseConnection.exec_params('SELECT * FROM albums;', [])
+    result.each do |record|
+      @terminal.puts "#{record['id']} - #{record['title']} - #{record['release_year']}"
+    end
+  end
+
+  def list_artists
+    result = DatabaseConnection.exec_params('SELECT * FROM artists;', [])
+    result.each do |record|
+      @terminal.puts "#{record['id']} - #{record['name']} - #{record['genre']}"
+    end
+  end
+
 end
 
 if __FILE__ == $0
