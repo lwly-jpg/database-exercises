@@ -41,6 +41,12 @@ class PostRepository
     DatabaseConnection.exec_params(sql, sql_params)
   end
 
+  def update(post)
+    sql = 'UPDATE posts SET title = $1, content = $2, views = $3 WHERE id = $4;'
+    sql_params = [post.title, post.content, post.views, post.id]
+    DatabaseConnection.exec_params(sql, sql_params)
+  end
+
   def delete(id)
     sql = 'DELETE FROM posts WHERE id = $1;'
     sql_params = [id]

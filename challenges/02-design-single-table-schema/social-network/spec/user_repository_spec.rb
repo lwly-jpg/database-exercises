@@ -74,5 +74,17 @@ describe UserRepository do
     expect(all_users.length).to eq 0
   end
 
+  it 'updates a user' do
+    repo = UserRepository.new
+    user = repo.find(1)
+    user.username = 'frog'
+    repo.update(user)
+
+    updated_user = repo.find(1)
+
+    expect(updated_user.username).to eq 'frog'
+    expect(updated_user.email).to eq 'toad@fake.com'
+  end
+
   
 end

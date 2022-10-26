@@ -40,12 +40,17 @@ class UserRepository
     DatabaseConnection.exec_params(sql, sql_params)
   end
 
+  def update(user)
+    sql = 'UPDATE users SET username = $1, email = $2 WHERE id = $3;'
+    sql_params = [user.username, user.email, user.id]
+    DatabaseConnection.exec_params(sql, sql_params)
+    return nil
+  end
+
   def delete(id)
     sql = 'DELETE FROM users WHERE id = $1;'
     sql_params = [id]
-
     DatabaseConnection.exec_params(sql, sql_params)
-
   end
 
 end

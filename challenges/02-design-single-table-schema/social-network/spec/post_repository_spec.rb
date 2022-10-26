@@ -75,4 +75,17 @@ describe PostRepository do
     expect(all_posts.first.content).to eq 'is amazing'
     expect(all_posts.first.views).to eq '30'
   end
+
+  it 'updates a user' do
+    repo = PostRepository.new
+    post = repo.find(1)
+    post.title = 'deleted'
+    post.content = 'deleted'
+    post.views = '0'
+    repo.update(post)
+    updated_post = repo.find(1)
+    expect(updated_post.title).to eq 'deleted'
+    expect(updated_post.content).to eq 'deleted'
+    expect(updated_post.views).to eq '0'
+  end
 end
