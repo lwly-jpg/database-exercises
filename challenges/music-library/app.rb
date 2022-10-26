@@ -31,16 +31,16 @@ class Application
   private
 
   def list_albums
-    result = DatabaseConnection.exec_params('SELECT * FROM albums;', [])
+    result = DatabaseConnection.exec_params('SELECT id, title, release_year FROM albums;', [])
     result.each do |record|
-      @terminal.puts "#{record['id']} - #{record['title']} - #{record['release_year']}"
+      @terminal.puts record.values.join(" - ")
     end
   end
 
   def list_artists
-    result = DatabaseConnection.exec_params('SELECT * FROM artists;', [])
+    result = DatabaseConnection.exec_params('SELECT id, name, genre FROM artists;', [])
     result.each do |record|
-      @terminal.puts "#{record['id']} - #{record['name']} - #{record['genre']}"
+      @terminal.puts record.values.join(" - ")
     end
   end
 
