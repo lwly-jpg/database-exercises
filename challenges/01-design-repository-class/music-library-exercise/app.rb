@@ -22,6 +22,8 @@ class Application
       list_albums
     elsif input == "2"
       list_artists
+    else
+      @terminal.puts "Invalid input."
     end 
 
   end
