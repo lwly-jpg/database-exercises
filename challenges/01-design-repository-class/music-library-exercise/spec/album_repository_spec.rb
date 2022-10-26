@@ -28,4 +28,19 @@ describe 'AlbumRepository' do
     expect(album.release_year).to eq "1991"
     expect(album.artist_id).to eq "14"
   end
+
+  it 'creates a new album' do
+    repo = AlbumRepository.new
+    new_album = Album.new
+    new_album.title = 'Toxicity'
+    new_album.release_year = 1991
+    new_album.artist_id = 15
+    repo.create(new_album)
+    albums = repo.all
+    last_album = albums.last
+    expect(albums.length).to eq 3
+    expect(last_album.title).to eq 'Toxicity'
+    expect(last_album.release_year).to eq '1991'
+    expect(last_album.artist_id).to eq '15'
+  end
 end
