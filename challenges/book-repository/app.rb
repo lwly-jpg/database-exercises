@@ -7,3 +7,5 @@ result = DatabaseConnection.exec_params('SELECT * FROM books;', [])
 result.each do |record|
   p "#{record['id']} - #{record['title']} - #{record['author_name']}"
 end
+
+# p record.values.joins(" - ")

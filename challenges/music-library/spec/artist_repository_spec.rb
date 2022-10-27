@@ -38,4 +38,21 @@ describe ArtistRepository do
     expect(last_artist.name).to eq ('System of a Down')
     expect(last_artist.genre).to eq ('Heavy Metal')
   end
+
+
+  it 'updates an artist with new values' do
+    repo = ArtistRepository.new
+
+    artist = repo.find(1)
+
+    artist.name = 'Something else'
+    artist.genre = 'Disco'
+
+    repo.update(artist)
+
+    updated_artist = repo.find(1)
+
+    expect(updated_artist.name).to eq 'Something else'
+    expect(updated_artist.genre).to eq 'Disco'
+  end
 end

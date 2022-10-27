@@ -43,4 +43,5 @@ describe 'AlbumRepository' do
     expect(last_album.release_year).to eq '1991'
     expect(last_album.artist_id).to eq '15'
   end
+
 end
